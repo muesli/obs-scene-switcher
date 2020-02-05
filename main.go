@@ -69,7 +69,7 @@ func main() {
 	}
 
 	if client != nil {
-		client.Disconnect()
+		_ = client.Disconnect()
 	}
 }
 
@@ -114,7 +114,7 @@ func handleActiveWindowChanged(event ActiveWindowChangedEvent) {
 		if event.Window.Class == v.WindowClass ||
 			event.Window.Name == v.WindowName {
 			req := obsws.NewSetCurrentSceneRequest(v.SceneName)
-			req.Send(*client)
+			_ = req.Send(*client)
 		}
 	}
 }
