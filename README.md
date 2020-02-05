@@ -20,6 +20,9 @@ Edit scenes.toml and define which scenes you want to be connected to which
 windows, e.g.:
 
 ```
+[away_scene]
+    scene_name = "Be Right Back"
+
 [[scenes]]
     scene_name = "IDE"
     window_class = "code-oss"
@@ -36,6 +39,10 @@ windows, e.g.:
 In plain english, this means that whenever you focus your `VS Code` window, OBS
 will be asked to switch to the scene called `IDE`. If you focus your `Konsole`
 window it switches to the scene `Terminal`, and so on.
+
+The `away_scene` defines a scene which, when currently active, temporarily stops
+automatic scene switching. This is useful for keeping special scenes active,
+like a "Be Right Back" mode you only want to manually disable again.
 
 ## Usage
 
