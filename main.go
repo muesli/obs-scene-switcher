@@ -40,7 +40,8 @@ type Scene struct {
 type Scenes []Scene
 
 type Config struct {
-	Scenes Scenes `toml:"scenes"`
+	Scenes    Scenes `toml:"scenes"`
+	AwayScene Scene  `toml:"away_scene"`
 }
 
 func LoadConfig(filename string) (Config, error) {
@@ -98,6 +99,13 @@ func handleActiveWindowChanged(event ActiveWindowChangedEvent) {
 	recentWindows = append([]Window{event.Window}, recentWindows...)
 	if len(recentWindows) > 15 {
 		recentWindows = recentWindows[0:15]
+	}
+
+	req := obsws.NewGetCurrentSceneRequest()
+	resp, err := req.SendReceive(*client)
+	if err == nil && resp.Name == config.AwayScene.SceneName {
+		fmt.Println("Skipping switch, in Away mode!")
+		return
 	}
 
 	for _, v := range config.Scenes {
