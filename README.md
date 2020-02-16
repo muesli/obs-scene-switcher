@@ -3,7 +3,8 @@
 [![GoDoc](https://godoc.org/github.com/golang/gddo?status.svg)](https://godoc.org/github.com/muesli/obs-scene-switcher)
 [![Go ReportCard](http://goreportcard.com/badge/muesli/obs-scene-switcher)](http://goreportcard.com/report/muesli/obs-scene-switcher)
 
-obs-scene-switcher is a command-line remote control for OBS
+obs-scene-switcher is a command-line remote control for OBS. It requires the
+[obs-websocket](https://github.com/Palakis/obs-websocket) plugin to be installed on your system.
 
 ## Installation
 
