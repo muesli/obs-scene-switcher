@@ -8,10 +8,23 @@ obs-scene-switcher is a command-line remote control for OBS. It requires the
 
 ## Installation
 
-Make sure you have a working Go environment (Go 1.11 or higher is required).
-See the [install instructions](http://golang.org/doc/install.html).
+### Packages & Binaries
 
-To install obs-scene-switcher, simply run:
+On Arch Linux you can simply install the package from the AUR:
+
+    yay -S obs-scene-switcher
+
+Or download a binary from the [releases](https://github.com/muesli/obs-scene-switcher/releases)
+page. Linux (including ARM) binaries are available, as well as Debian and RPM
+packages.
+
+### Build From Source
+
+Alternatively you can also build `obs-scene-switcher` from source. Make sure you
+have a working Go environment (Go 1.11 or higher is required). See the
+[install instructions](http://golang.org/doc/install.html).
+
+To build obs-scene-switcher, simply run:
 
     go get github.com/muesli/obs-scene-switcher
 
@@ -21,9 +34,6 @@ Edit scenes.toml and define which scenes you want to be connected to which
 windows, e.g.:
 
 ```
-[[away_scenes]]
-    scene_name = "Be Right Back"
-
 [[scenes]]
     scene_name = "IDE"
     window_class = "code-oss"
@@ -35,6 +45,9 @@ windows, e.g.:
 [[scenes]]
     scene_name = "Browser"
     window_class = "Chromium"
+
+[[away_scenes]]
+    scene_name = "Be Right Back"
 ```
 
 In plain english, this means that whenever you focus your `VS Code` window, OBS
