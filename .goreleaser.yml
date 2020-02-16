@@ -1,0 +1,57 @@
+env:
+  - GO111MODULE=on
+before:
+  hooks:
+  - go mod download
+builds:
+  -
+    id: "obs-scene-switcher"
+    binary: obs-scene-switcher
+    ldflags: -s -w -X main.Version={{ .Version }} -X main.CommitSHA={{ .Commit }}
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - arm64
+      - 386
+      - arm
+    goarm:
+      - 6
+      - 7
+
+archives:
+  - id: default
+    builds:
+      - obs-scene-switcher
+    replacements:
+      386: i386
+      amd64: x86_64
+
+nfpms:
+  -
+    builds:
+    - obs-scene-switcher
+
+    vendor: muesli
+    homepage: "https://fribbledom.com/"
+    maintainer: "Christian Muehlhaeuser <muesli@gmail.com>"
+    description: "Tracks your active window and switches OBS scenes accordingly"
+    license: MIT
+    formats:
+      - deb
+      - rpm
+    bindir: /usr/bin
+
+signs:
+  - artifacts: checksum
+
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs:'
+    - '^test:'
