@@ -9,5 +9,5 @@ require (
 	github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802
 	github.com/BurntSushi/xgbutil v0.0.0-20190907113008-ad855c713046
 	github.com/christopher-dG/go-obs-websocket v0.0.0-20181224025342-2efc3605bff5
-	github.com/spf13/cobra v1.4.0
+	github.com/spf13/cobra v1.6.1
 )
